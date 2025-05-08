@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: @project.name@
+  mvc:
+    servlet:
+      path: /api/v1
+  datasource:
+    url: jdbc:h2:mem:fibank
+    username: sa
+    password: password
+    hikari:
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        connection:
+          provider_disables:
+            autocommit: true
+  liquibase:
+    change-log: classpath:config/liquibase/db.changelog-master.yaml
