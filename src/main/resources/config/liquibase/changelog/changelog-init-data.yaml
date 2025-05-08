@@ -49,3 +49,43 @@ databaseChangeLog:
                     foreignKeyName: fk_cashier_account
                     references: cashiers(id)
                     nullable: false
+  - changeSet:
+      id: 3
+      author: "admin"
+      changes:
+        - createTable:
+            tableName: transaction_histories
+            columns:
+              - column:
+                  name: transaction_id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: timestamp
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: DECIMAL(19, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency
+                  type: SMALLINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: deposit
+                  type: SMALLINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: account_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_account_transaction_history
+                    references: accounts(id)
+                    nullable: false

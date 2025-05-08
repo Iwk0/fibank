@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "fib.api.key",
+      "type": "java.lang.String",
+      "description": "Description for fib.api.key."
+  }
+] }

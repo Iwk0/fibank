@@ -1,6 +1,7 @@
 package com.fibank.cashier;
 
-import com.fibank.balance.Account;
+import com.fibank.account.Account;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,6 @@ public class Cashier {
   @Column(length = 150, nullable = false)
   private String name;
 
-  @OneToMany(mappedBy = "cashier")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "cashier")
   private Set<Account> accounts = new HashSet<>();
 }
