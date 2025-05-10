@@ -57,15 +57,15 @@ databaseChangeLog:
             tableName: denominations
             columns:
               - column:
+                  name: denomination
+                  type: INTEGER
+              - column:
+                  name: quantity
+                  type: INTEGER
+              - column:
                   name: balance_id
                   type: BIGINT
                   constraints:
                     foreignKeyName: fk_denomination_balance
                     references: balances(id)
                     nullable: false
-              - column:
-                  name: denomination
-                  type: INTEGER
-              - column:
-                  name: quantity
-                  type: INTEGER

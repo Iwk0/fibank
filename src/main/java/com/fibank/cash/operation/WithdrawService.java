@@ -4,7 +4,6 @@ import com.fibank.balance.Balance;
 import com.fibank.balance.BalanceCommandService;
 import com.fibank.balance.BalanceReadService;
 import com.fibank.cash.operation.dto.CashOperationRequest;
-import com.fibank.exception.NotEnoughBalanceException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,10 +27,6 @@ class WithdrawService implements OperationService {
         request.getDenominations().entrySet().stream()
             .mapToInt(entry -> entry.getKey() * entry.getValue())
             .sum();
-
-    if (balance.getAmount() - calculated < 0) {
-      throw new NotEnoughBalanceException("Not enough balance");
-    }
 
     balance.setAmount(balance.getAmount() - calculated);
 

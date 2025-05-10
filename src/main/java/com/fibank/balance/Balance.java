@@ -1,6 +1,7 @@
 package com.fibank.balance;
 
 import com.fibank.cashier.Cashier;
+import com.fibank.exception.NotEnoughBalanceException;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -17,8 +18,8 @@ import jakarta.persistence.MapKeyColumn;
 import jakarta.persistence.Table;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Getter
@@ -30,7 +31,6 @@ public class Balance {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Setter
   @Column(nullable = false)
   private Integer amount;
 
@@ -46,5 +46,27 @@ public class Balance {
   @MapKeyColumn(name = "denomination")
   @Column(name = "quantity")
   @CollectionTable(name = "denominations", joinColumns = @JoinColumn(name = "balance_id"))
-  Map<Integer, Integer> denominations = new HashMap<>();
+  private Map<Integer, Integer> denominations = new HashMap<>();
+
+  public void setAmount(Integer amount) {
+    if (amount < 0) {
+      throw new NotEnoughBalanceException("Not enough balance");
+    }
+
+    this.amount = amount;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Balance balance = (Balance) o;
+    return Objects.equals(amount, balance.amount)
+        && currency == balance.currency
+        && Objects.equals(cashier, balance.cashier);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(amount, currency, cashier);
+  }
 }

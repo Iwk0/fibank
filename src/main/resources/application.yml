@@ -28,7 +28,7 @@ spring:
 
 fib:
   api:
-    key: f9Uie8nNf112hx8s
+    key: ${FIB_X_AUTH_KEY:f9Uie8nNf112hx8s}
 
 files:
   transaction-history:
