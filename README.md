@@ -45,6 +45,40 @@ The project follows a standard Spring Boot application structure with the follow
 - **POST /cash-operation**: Perform deposit or withdrawal operations
 - **GET /cash-balance**: Retrieve balance information with optional filtering by date range and cashier
 
+## Postman Collections
+
+The project includes Postman collections to help you test the API endpoints:
+
+- **Collection File**: `collection/Fibank.postman_collection.json`
+- **Environment File**: `collection/Fibank env.postman_environment.json`
+
+### Available Requests
+
+1. **Withdraw Request**: Make a withdrawal operation
+   - Method: POST
+   - Endpoint: `/api/v1/cash-operation`
+   - Authentication: API Key (FIB-X-AUTH header)
+
+2. **Deposit Request**: Make a deposit operation
+   - Method: POST
+   - Endpoint: `/api/v1/cash-operation`
+   - Authentication: API Key (FIB-X-AUTH header)
+
+3. **Cash Balance Request**: Get balance information
+   - Method: GET
+   - Endpoint: `/api/v1/cash-balance`
+   - Authentication: API Key (FIB-X-AUTH header)
+   - Optional Query Parameters:
+     - `cashier`: Filter by cashier name
+     - `dateFrom`: Filter by start date (format: yyyy-MM-dd'T'HH:mm:ss)
+     - `dateTo`: Filter by end date (format: yyyy-MM-dd'T'HH:mm:ss)
+
+### Setup Instructions
+
+1. Import both files into Postman
+2. Set the `apiKey` variable in the environment with your API key
+3. Use the collection to test the API endpoints
+
 ## Setup and Installation
 
 1. Ensure you have Java 17 installed
