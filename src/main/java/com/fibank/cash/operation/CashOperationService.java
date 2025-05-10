@@ -20,15 +20,11 @@ public class CashOperationService {
   private final BalanceCommandService balanceCommandService;
 
   public CashOperationResponse cashOperation(CashOperationRequest request) {
-    Balance balance =
-        balanceReadService
-            .findByCashierAndCurrency(request.getCashier(), request.getCurrency())
-            .orElseThrow();
+    OperationService operationService =
+        OperationFactory.getOperation(
+            request.getOperation(), balanceReadService, balanceCommandService);
 
-    OperationService operationService = OperationFactory.getOperation(request.getOperation());
-    operationService.cashOperation(request, balance);
-
-    Balance persistedBalance = balanceCommandService.save(balance);
+    Balance persistedBalance = operationService.cashOperation(request);
 
     return CashOperationResponse.builder()
         .cashierName(persistedBalance.getCashier().getName())

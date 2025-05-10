@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class BalanceReadService {
 
-    private final BalanceRepository balanceRepository;
+  private final BalanceRepository balanceRepository;
 
-    public Optional<Balance> findByCashierAndCurrency(String cashierName, Currency currency) {
-        return balanceRepository.findByCashierNameAndCurrency(cashierName, currency);
-    }
+  public Optional<Balance> findByCashierAndCurrency(String cashierName, Currency currency) {
+    return balanceRepository.findByCashierNameAndCurrency(cashierName, currency);
+  }
 }

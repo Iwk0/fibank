@@ -6,10 +6,10 @@ import com.fibank.cash.operation.dto.CashOperationRequest;
 public interface OperationService {
 
   /**
-   * Processes a cash operation for a given cashier and currency.
+   * Executes a cash operation.
    *
-   * @param request cash operation request
-   * @param balance current balance
+   * @param request the cash operation request
+   * @return the updated balance
    */
-  void cashOperation(CashOperationRequest request, Balance balance);
+  Balance cashOperation(CashOperationRequest request);
 }
