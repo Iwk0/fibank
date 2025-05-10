@@ -33,4 +33,13 @@ public class ExceptionController {
 
     return ResponseEntity.badRequest().body(error);
   }
+
+  @ExceptionHandler(RuntimeException.class)
+  public ResponseEntity<GlobalError> exception(RuntimeException ex) {
+    log.error("Exception", ex);
+
+    GlobalError error = exceptionService.errorHandler(ex.getMessage());
+
+    return ResponseEntity.badRequest().body(error);
+  }
 }
