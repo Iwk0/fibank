@@ -20,6 +20,7 @@ public class FileUtil {
 
   public static void writeToFile(String content, String path) {
     LOCK.writeLock().lock();
+
     try {
       Path tempPath = Paths.get(path);
 
@@ -37,6 +38,7 @@ public class FileUtil {
 
   public static List<String> readFile(String path) {
     LOCK.readLock().lock();
+
     try {
       Path tempPath = Paths.get(path);
       return Files.readAllLines(tempPath);

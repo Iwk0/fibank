@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 @Component
-public class HistoryWriting {
+public class HistoryWriter {
 
   @Value("${files.transaction-history.path}")
   private String filePath;
