@@ -29,7 +29,7 @@ public class CashOperationService {
         .amount(persistedBalance.getAmount())
         .currency(persistedBalance.getCurrency())
         .operation(request.getOperation())
-        .denominations(request.getDenominations())
+        .denominations(persistedBalance.getDenominations())
         .build();
   }
 }

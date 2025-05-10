@@ -32,8 +32,7 @@ class DepositService implements OperationService {
 
     request
         .getDenominations()
-        .forEach(
-            (key, value) -> balance.getDenominations().computeIfPresent(key, (k, v) -> v + value));
+        .forEach((key, value) -> balance.getDenominations().merge(key, value, Integer::sum));
 
     return balanceCommandService.save(balance);
   }
