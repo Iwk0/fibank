@@ -1,7 +1,6 @@
 package com.fibank.balance;
 
 import com.fibank.cashier.Cashier;
-import com.fibank.exception.NotEnoughBalanceException;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -20,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -31,6 +31,7 @@ public class Balance {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Setter
   @Column(nullable = false)
   private Integer amount;
 
@@ -47,14 +48,6 @@ public class Balance {
   @Column(name = "quantity")
   @CollectionTable(name = "denominations", joinColumns = @JoinColumn(name = "balance_id"))
   private Map<Integer, Integer> denominations = new HashMap<>();
-
-  public void setAmount(Integer amount) {
-    if (amount < 0) {
-      throw new NotEnoughBalanceException("Not enough balance");
-    }
-
-    this.amount = amount;
-  }
 
   @Override
   public boolean equals(Object o) {
