@@ -24,11 +24,11 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 
     String apiKey = request.getHeader(API_KEY_HEADER);
 
-    //if (VALID_API_KEY.equals(apiKey)) {
+    if (validApiKey.equals(apiKey)) {
       filterChain.doFilter(request, response);
-    /*} else {
+    } else {
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       response.getWriter().write("Unauthorized - Invalid API Key");
-    }*/
+    }
   }
 }

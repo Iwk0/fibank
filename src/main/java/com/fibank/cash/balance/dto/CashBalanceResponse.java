@@ -3,6 +3,7 @@ package com.fibank.cash.balance.dto;
 import com.fibank.balance.Currency;
 import com.fibank.balance.Operation;
 import java.time.LocalDateTime;
+import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -16,4 +17,5 @@ public class CashBalanceResponse {
   private Currency currency;
   private Operation operation;
   private String cashier;
+  private Map<Integer, Integer> denominations;
 }

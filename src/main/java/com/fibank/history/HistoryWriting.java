@@ -27,6 +27,7 @@ public class HistoryWriting {
             .currency(result.getCurrency())
             .cashier(result.getCashierName())
             .operation(result.getOperation())
+            .denominations(result.getDenominations())
             .build();
 
     FileUtil.writeToFile(transactionHistory.toString(), filePath);

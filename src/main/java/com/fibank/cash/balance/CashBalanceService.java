@@ -25,6 +25,7 @@ public class CashBalanceService {
                     .timestamp(transactionHistory.getTimestamp())
                     .amount(transactionHistory.getAmount())
                     .cashier(transactionHistory.getCashier())
+                    .denominations(transactionHistory.getDenominations())
                     .build())
         .toList();
   }

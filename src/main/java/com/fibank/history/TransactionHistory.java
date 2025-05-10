@@ -5,6 +5,9 @@ import com.fibank.balance.Operation;
 import com.fibank.util.TransactionIdGenerator;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -17,6 +20,8 @@ public class TransactionHistory {
   @Builder.Default
   private LocalDateTime timestamp = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
+  @Builder.Default private Map<Integer, Integer> denominations = new HashMap<>();
+
   private Integer amount;
   private Currency currency;
   private Operation operation;
@@ -25,12 +30,18 @@ public class TransactionHistory {
   @Override
   public String toString() {
     return String.format(
-        "transactionId: '%s' | timestamp: '%s' | amount: %d | currency: %s | operation: %s | cashier: '%s'",
-        transactionId,
-        timestamp,
-        amount,
-        currency != null ? currency.name() : "N/A",
-        operation != null ? operation.name() : "N/A",
-        cashier);
+        "transactionId: '%s' | timestamp: '%s' | amount: %d | currency: %s | operation: %s | cashier: '%s' | denominations: %s",
+        transactionId, timestamp, amount, currency, operation, cashier, formatDenominations());
+  }
+
+  private String formatDenominations() {
+    if (denominations.isEmpty()) {
+      return "{}";
+    }
+
+    return denominations.entrySet().stream()
+        .sorted(Map.Entry.comparingByKey())
+        .map(e -> e.getKey() + "x" + e.getValue())
+        .collect(Collectors.joining(", ", "{", "}"));
   }
 }
