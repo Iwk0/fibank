@@ -1,6 +1,6 @@
 package com.fibank.cash.operation;
 
-import com.fibank.balance.Operation;
+import com.fibank.cash.Operation;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

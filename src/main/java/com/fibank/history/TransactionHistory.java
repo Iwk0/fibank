@@ -1,7 +1,7 @@
 package com.fibank.history;
 
 import com.fibank.balance.Currency;
-import com.fibank.balance.Operation;
+import com.fibank.cash.Operation;
 import com.fibank.util.TransactionIdGenerator;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

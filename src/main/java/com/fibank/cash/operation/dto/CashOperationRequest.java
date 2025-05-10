@@ -3,7 +3,7 @@ package com.fibank.cash.operation.dto;
 import com.fibank.annotation.Denomination;
 import com.fibank.annotation.Exists;
 import com.fibank.balance.Currency;
-import com.fibank.balance.Operation;
+import com.fibank.cash.Operation;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

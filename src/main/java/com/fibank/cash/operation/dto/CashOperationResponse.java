@@ -1,7 +1,7 @@
 package com.fibank.cash.operation.dto;
 
 import com.fibank.balance.Currency;
-import com.fibank.balance.Operation;
+import com.fibank.cash.Operation;
 import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
