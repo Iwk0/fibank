@@ -6,12 +6,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Aspect
 @Component
 public class HistoryWriting {
+
+  @Value("${files.transaction-history.path}")
+  private String filePath;
 
   @AfterReturning(
       value = "execution(* com.fibank.cash.operation.CashOperationService.cashOperation(..))",
@@ -25,7 +29,7 @@ public class HistoryWriting {
             .operation(result.getOperation())
             .build();
 
-    FileUtil.writeToFile(transactionHistory.toString(), "transaction-history.txt");
+    FileUtil.writeToFile(transactionHistory.toString(), filePath);
 
     log.info("Transaction history created successfully");
   }

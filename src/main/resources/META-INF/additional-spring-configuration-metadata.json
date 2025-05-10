@@ -4,5 +4,10 @@
       "name": "fib.api.key",
       "type": "java.lang.String",
       "description": "Description for fib.api.key."
-  }
-] }
+    },
+    {
+      "name": "files.transaction-history.path",
+      "type": "java.lang.String",
+      "description": "Description for files.transaction-history.path."
+    }
+  ] }

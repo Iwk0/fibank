@@ -3,7 +3,8 @@ package com.fibank.history;
 import com.fibank.balance.Currency;
 import com.fibank.balance.Operation;
 import com.fibank.util.TransactionIdGenerator;
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,7 +14,8 @@ public class TransactionHistory {
 
   @Builder.Default private String transactionId = TransactionIdGenerator.generateTransactionId();
 
-  @Builder.Default private Instant timestamp = Instant.now();
+  @Builder.Default
+  private LocalDateTime timestamp = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
   private Integer amount;
   private Currency currency;
