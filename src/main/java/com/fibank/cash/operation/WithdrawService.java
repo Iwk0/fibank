@@ -37,6 +37,7 @@ class WithdrawService implements OperationService {
                           int subtraction = a - b;
 
                           if (subtraction < 0) {
+                            log.error("Not enough subtraction");
                             throw new NotEnoughBalanceException("Not enough denominations");
                           }
 
