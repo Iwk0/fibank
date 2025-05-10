@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: changelog/changelog-init-data.yaml
       relativeToChangelogFile: true
+  - include:
+      file: changelog/changelog-data-dev.yaml
+      relativeToChangelogFile: true

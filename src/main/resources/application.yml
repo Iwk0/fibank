@@ -24,6 +24,7 @@ spring:
             autocommit: true
   liquibase:
     change-log: classpath:config/liquibase/db.changelog-master.yaml
+    contexts: dev
 
 fib:
   api:

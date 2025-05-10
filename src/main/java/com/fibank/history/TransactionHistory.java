@@ -1,63 +1,34 @@
 package com.fibank.history;
 
-import com.fibank.account.Account;
+import com.fibank.balance.Currency;
+import com.fibank.balance.Operation;
 import com.fibank.util.TransactionIdGenerator;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import java.math.BigDecimal;
 import java.time.Instant;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Immutable;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
 @Getter
-@Setter
-@Immutable
-@Table(name = "transaction_histories")
-@EntityListeners(AuditingEntityListener.class)
+@Builder
 public class TransactionHistory {
 
-  @Id
-  @Column(length = 36, nullable = false, updatable = false)
-  private String transactionId = TransactionIdGenerator.generateTransactionId();
+  @Builder.Default private String transactionId = TransactionIdGenerator.generateTransactionId();
 
-  @CreatedDate
-  @Column(nullable = false)
-  private Instant timestamp;
+  @Builder.Default private Instant timestamp = Instant.now();
 
-  @Column(precision = 19, scale = 2, nullable = false)
-  private BigDecimal amount;
-
-  @Enumerated(EnumType.ORDINAL)
-  @Column(nullable = false)
+  private Integer amount;
   private Currency currency;
+  private Operation operation;
+  private String cashier;
 
-  @Enumerated(EnumType.ORDINAL)
-  @Column(nullable = false)
-  private Deposit deposit;
-
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "account_id", nullable = false)
-  private Account account;
-
-  public enum Deposit {
-    DEPOSIT,
-    WITHDRAW
-  }
-
-  public enum Currency {
-    BGN,
-    EUR
+  @Override
+  public String toString() {
+    return String.format(
+        "transactionId: '%s' | timestamp: '%s' | amount: %d | currency: %s | operation: %s | cashier: '%s'",
+        transactionId,
+        timestamp,
+        amount,
+        currency != null ? currency.name() : "N/A",
+        operation != null ? operation.name() : "N/A",
+        cashier);
   }
 }

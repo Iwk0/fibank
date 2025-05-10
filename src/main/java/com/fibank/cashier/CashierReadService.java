@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CashierReadService {
 
-    private final CashierRepository cashierRepository;
+  private final CashierRepository cashierRepository;
 
-    public Cashier getCashierById(Long id) {
-        return cashierRepository.findById(id).orElseThrow();
-    }
+  public boolean exists(String cashierName) {
+    return cashierRepository.existsByName(cashierName);
+  }
 }

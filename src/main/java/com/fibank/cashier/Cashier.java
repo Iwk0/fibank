@@ -1,6 +1,6 @@
 package com.fibank.cashier;
 
-import com.fibank.account.Account;
+import com.fibank.balance.Balance;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,11 +12,9 @@ import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @Table(name = "cashiers")
 public class Cashier {
 
@@ -29,5 +27,5 @@ public class Cashier {
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "cashier")
-  private Set<Account> accounts = new HashSet<>();
+  private Set<Balance> balances = new HashSet<>();
 }
