@@ -22,7 +22,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cashier\": \"PETER\",\r\n    \"currency\": \"BGN\",\r\n    \"operation\": \"WITHDRAW\",\r\n    \"amount\": 100,\r\n    \"denominations\": {\r\n        \"5\" : 10,\r\n        \"1\":  50\r\n    }\r\n}",
+					"raw": "{\r\n    \"cashier\": \"PETER\",\r\n    \"currency\": \"BGN\",\r\n    \"operation\": \"WITHDRAW\",\r\n    \"amount\": 100,\r\n    \"denominations\": {\r\n        \"10\" : 5,\r\n        \"50\":  1\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,7 +61,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cashier\": \"PETER\",\r\n    \"currency\": \"BGN\",\r\n    \"operation\": \"DEPOSIT\",\r\n    \"amount\": 100,\r\n    \"denominations\": {\r\n        \"5\" : 10,\r\n        \"1\":  50\r\n    }\r\n}",
+					"raw": "{\r\n    \"cashier\": \"PETER\",\r\n    \"currency\": \"BGN\",\r\n    \"operation\": \"DEPOSIT\",\r\n    \"amount\": 100,\r\n    \"denominations\": {\r\n        \"50\":  1,\r\n        \"20\": 2,\r\n        \"10\": 1\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
