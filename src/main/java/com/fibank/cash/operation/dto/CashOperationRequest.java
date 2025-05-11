@@ -7,6 +7,7 @@ import com.fibank.cash.Operation;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class CashOperationRequest {
 
   @NotNull private Operation operation;
 
-  @NotNull private Integer amount;
+  @NotNull @Positive private Integer amount;
 
-  @NotEmpty private Map<Integer, Integer> denominations;
+  @NotEmpty private Map<@Positive Integer, @Positive Integer> denominations;
 }
