@@ -25,5 +25,5 @@ public class CashOperationRequest {
 
   @NotNull @Positive private Integer amount;
 
-  @NotEmpty private Map<@Positive Integer, @Positive Integer> denominations;
+  @NotEmpty private Map<@NotNull @Positive Integer, @NotNull @Positive Integer> denominations;
 }
